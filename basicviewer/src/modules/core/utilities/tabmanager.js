@@ -25,23 +25,22 @@ define(["dojo/_base/declare", "../utilities/environment", "dojo/_base/lang", "do
                 // Details panel- This pane gets created right away, since it is so simple and usually the start pane.
                 if ((this._AppConfig.displaydetails === 'true' || this._AppConfig.displaydetails === true) && this._AppConfig.description !== "") {
                     //*** Check if this pane was set to be the startup pane in app.js or AGO. Replace the param name in next line.
-                    var selectedPane = (this._AppConfig.startupwidget === 'displaydetails') ? true : false;
-                    var detailCp = new contentPane({
-                        title: 'Details', //i18n.tools.details.title,
-                        selected: selectedPane,
-                        id: "detailPanel"
-                    });
+                    var configParamName = 'displaydetails';
+                    //*** Constructor params for the tab (which is a contentpane- http://dojotoolkit.org/reference-guide/1.8/dijit/layout/ContentPane.html).
+                    //*** Give the tab's content pane a unique id.
+                    //*** and title to display in the tab
+                    var tabParams = {
+                        title: 'FY 2014', //i18n.tools.details.title,
+                        id: 'detailPanel'
+                    };
+                    //*** The relative path to your module file
+                    var modulePath = "../../custom/capbudg";
+                    //*** If your widget requires specific constructor parameters to be passed in, you can set the object here.
+                    var constructorParams = { };
+                    //*** Does your widget's parent need to be resized after it's startup in order to layout properly? Default to false.
+                    var resizeAfterStartup = false;
 
-                    var detailsContent = '';
-                    if (this._AppConfig.embed && (this._AppConfig.displaytitle === "true" || this._AppConfig.displaytitle === true))
-                        detailsContent = detailsContent.concat('<h1>', this._AppConfig.title, '</h1>', this._AppConfig.description);
-                    else
-                        detailsContent = this._AppConfig.description;
-                    //set the detail info
-                    detailCp.set('content', detailsContent);
-
-                    leftTabCont.addChild(detailCp);
-                    domClass.add(dom.byId('detailPanel'), 'panel_content');
+                    this._CreateTabPane(leftTabCont, configParamName, tabParams, modulePath, constructorParams, resizeAfterStartup);
                 }
 
                 //*** Table of Contents- use as an example of lazy-loading a pane at runtime

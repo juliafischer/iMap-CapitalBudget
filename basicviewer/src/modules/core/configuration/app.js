@@ -31,7 +31,7 @@ define(["dojo/_base/declare", "dojox/html/entities", "dojo/_base/lang", "dojo/Ev
                     //set to true to display the title
                     displaytitle: true,
                     //Enter a title, if no title is specified, the webmap's title is used.
-                    title: "iMap",
+                    title: "Fiscal Year 2014 Capital Budget",
                     //URL to title logo, if none specified, then defaults to assets/MDLogo.gif
                     titleLogoUrl: "assets/MDlogo-small.gif",
                     //Provide an image and url for a logo that will be displayed as a clickable image
@@ -69,7 +69,7 @@ define(["dojo/_base/declare", "dojox/html/entities", "dojo/_base/lang", "dojo/Ev
 
                     //*** Widgets ***
                     displaydetails: true,
-                    tablecontents: true,
+                    tablecontents: false,
                     displayeditor: false,
                     startupwidget: 'displaydetails',
                     ////When editing you need to specify a proxyurl (see below) if the service is on a different domain
