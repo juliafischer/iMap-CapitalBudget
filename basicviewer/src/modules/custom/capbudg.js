@@ -10,9 +10,9 @@
 define(["dojo/_base/declare", "dojo/dom-construct", "dijit/_WidgetBase", "dijit/_TemplatedMixin", "dojo/on", "dijit/registry"
     , "dojo/text!./capbudg.html", "dojo/_base/lang"
     , "dojo/dom", "dojo/query", "dojox/charting/Chart", "dojox/charting/themes/Claro", ".././core/utilities/maphandler"
-    , "dojox/charting/plot2d/Pie", "xstyle/css!./capbudg.css"],
+    , "dojox/charting/plot2d/Pie", "dojox/charting/action2d/Tooltip", "dojox/charting/action2d/MoveSlice", "xstyle/css!./capbudg.css"],
     function(declare, domConstruct, WidgetBase, TemplatedMixin, on, registry, template, lang
-                , dom, query, Chart, theme, mapHandler, PiePlot){
+                , dom, query, Chart, theme, mapHandler, PiePlot, Tooltip, MoveSlice){
         return declare([WidgetBase, TemplatedMixin], {
             //*** Properties needed for this style of module
             // The template HTML fragment (as a string, created in dojo/text definition above)
@@ -34,14 +34,14 @@ define(["dojo/_base/declare", "dojo/dom-construct", "dijit/_WidgetBase", "dijit/
                 // x and y coordinates used for easy understanding of where they should display
                 // Data represents website visits over a week period
                 this.chartData = [
-                    { x: 1, y: 19021 },
-                    { x: 1, y: 12837 },
-                    { x: 1, y: 12378 },
-                    { x: 1, y: 21882 },
-                    { x: 1, y: 17654 },
-                    { x: 1, y: 15833 },
-                    { x: 1, y: 16122 }
+                    {x: 1, y: 31508000, tooltip: "Economic Development", text:"", color: "rgb(40, 75, 112)", mylabel: "Economic Development"},
+                    {x: 1, y: 561205000, tooltip: "Education",  text: "", color: "rgb(112, 40, 40)", mylabel: "Education" },
+                    {x: 1, y: 314238000, tooltip: "Health & Environment", text: "", color: "rgb(95, 113, 67)", mylabel: "Health & Environment" },
+                    {x: 1, y: 3090000, tooltip: "Other", text: "", color: "rgb(246, 188, 12)", mylabel: "Other" },
+                    {x: 1, y: 31111000, tooltip: "Public Safety & Safer Neighborhoods", text: "",  color: "rgb(56, 44, 108)" },
+                    {x: 1, y: 566600000, tooltip: "Transportation", text: "", color: "rgb(80, 34, 79)" }
                 ];
+
             }
 
             //The widget has been added to the DOM, though not visible yet. This is the recommended place to do most of the module's work
@@ -56,7 +56,12 @@ define(["dojo/_base/declare", "dojo/dom-construct", "dijit/_WidgetBase", "dijit/
                 this.inherited(arguments);
 
                 // Create the chart within it's "holding" node - which is defined in capbudg.html snippet
-                var pieChart = new Chart("capBudgChartDiv");
+                var pieChart = new Chart("capBudgChartDiv",{
+                    title: "FY 2014 Capital Budget Statewide Totals",
+                    titlePos: "top",
+                    titleFont: "normal normal normal 12pt Arial",
+                    titleFontColor: "black"
+                });
                 // Set the theme
                 pieChart.setTheme(theme);
                 // Add the only/default plot
@@ -67,7 +72,25 @@ define(["dojo/_base/declare", "dojo/dom-construct", "dijit/_WidgetBase", "dijit/
                     labelOffset: -20
                 });
                 // Add the series of data
-                pieChart.addSeries("January",this.chartData);
+                pieChart.addSeries("Statewide Totals - FY 2014",this.chartData);
+
+                // Create the tooltip
+                var tip = new Tooltip(pieChart,"default", {text: lang.hitch(this,function(args){
+                    Number.prototype.formatMoney = function(c, d, t){
+                        var n = this, c = isNaN(c = Math.abs(c)) ? 2 : c, d = d == undefined ? "," : d, t = t == undefined ? "." : t, s = n < 0 ? "-" : "", i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", j = (j = i.length) > 3 ? j % 3 : 0;
+                        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+                    };
+
+                    return this.chartData[args.index].tooltip + ": $" + args.y.formatMoney(2, ".", ",");
+                    })
+                });
+
+                //create pie slice animation
+                var anim = new MoveSlice(pieChart, "default", {
+                    scale: 1,
+                    shift: 3
+                });
+
                 // Render the chart!
                 pieChart.render();
             }

@@ -14,11 +14,11 @@ define(["dojo/_base/declare", "dojox/html/entities", "dojo/_base/lang", "dojo/Ev
                     appid: "",
                     //The ID for a web map from ArcGIS Online (AGO)
                     //If not going to specify a Web Map in AGO, then use empty quotes ("") here
-                    webmap: "d1201eea7afb4ed49f08a310e9803f2f", // 3182b7b31f10425ba0884fccc1916682
+                    webmap: "dfbdfa29268f4d36a5991f29441c6b63", // 3182b7b31f10425ba0884fccc1916682
                     // The URL to an ArcGIS Web Map- if not using ArcGIS.com.
                     // Can be relative to index.html. For example, if in basicviewer root- "webmap.js"
                     // If both webmap and webmapurl are empty, then a map must be programmatically defined in map.js
-                    webmapurl: "webmap.js",
+                    webmapurl: "http://maryland.maps.arcgis.com/home/webmap/viewer.html?webmap=dfbdfa29268f4d36a5991f29441c6b63",
                     //Enter a description for the application. This description will appear in the left pane
                     //if no description is entered, the webmap description (if populated) will be used.
                     description: "This is the development version of iMap, for use as a template.",
@@ -33,6 +33,7 @@ define(["dojo/_base/declare", "dojox/html/entities", "dojo/_base/lang", "dojo/Ev
                     //Enter a title, if no title is specified, the webmap's title is used.
                     title: "Fiscal Year 2014 Capital Budget",
                     //URL to title logo, if none specified, then defaults to assets/MDLogo.gif
+                    layername: "FY14CapitalBudgetIndividualProjects",
                     titleLogoUrl: "assets/MDlogo-small.gif",
                     //Provide an image and url for a logo that will be displayed as a clickable image
                     //in the lower right corner of the map. If nothing is specified then the esri logo will appear.
@@ -42,7 +43,7 @@ define(["dojo/_base/declare", "dojox/html/entities", "dojo/_base/lang", "dojo/Ev
                         link: 'http://mdimap.towson.edu/portal/'
                     },
                     //specify the width of the panel that holds the editor, legend, details
-                    leftpanewidth: '350',
+                    leftpanewidth: '400',
                     //specify the width of the panel that holds the TOC
                     //rightpanewidth: 280,
                     //The height (px) of the Header (where title, logo, and links are located)
@@ -78,9 +79,9 @@ define(["dojo/_base/declare", "dojox/html/entities", "dojo/_base/lang", "dojo/Ev
 
                     //*** Tools ***
                     //Optional tools - set to false to hide the tool
-                    displaytimeslider: true,
+                    displaytimeslider: false,
                     //Print options - Default is to not display on mobile devices, but can be overriden manually or in AGO
-                    displayprint: !(environment.TouchEnabled && environment.WindowWidth < 1200),
+                    displayprint: false, //!(environment.TouchEnabled && environment.WindowWidth < 1200),
                     printtask: "http://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
                     //Set the label in the nls file for your browsers language
                     printlayouts: [{
@@ -100,10 +101,11 @@ define(["dojo/_base/declare", "dojox/html/entities", "dojo/_base/lang", "dojo/Ev
                         label:  'Portrait - PNG',//i18n.tools.print.layouts.label4,
                         format: 'PNG32'
                     }],
-                    displaybasemaps: true,
-                    displaybookmarks: true,
+                    displaybasemaps: false,
+                    displaybookmarks: false,
                     displaymeasure: false,
-                    displayshare: true,//if enabled enter bitly key and login below.
+                    displayinterop: false,
+                    displayshare: false,//if enabled enter bitly key and login below.
                     //The application allows users to share the map with social networking sites like twitter
                     //and facebook. The url for the application can be quite long so shorten it using bit.ly.
                     //You will need to provide your own bitly key and login.
@@ -117,7 +119,7 @@ define(["dojo/_base/declare", "dojox/html/entities", "dojo/_base/lang", "dojo/Ev
                     displaysearch: true,
                     displayscalebar: true,
                     //Drawing toolbar
-                    displayinterop: true,
+
 
                     //*** General Settings ***
                     //i18n.viewer.main.scaleBarUnits,
@@ -162,6 +164,9 @@ define(["dojo/_base/declare", "dojox/html/entities", "dojo/_base/lang", "dojo/Ev
                         load: lang.hitch(this, function (response) {
                             if (response.values.title) {
                                 configOptions.title = response.values.title;
+                            }
+                            if (response.values.layername) {
+                                configOptions.layername = response.value.layername;
                             }
                             if (response.values.titleLogoUrl) {
                                 configOptions.titleLogoUrl = response.values.titleLogoUrl;

@@ -14,7 +14,7 @@ body {
   background:url(../../assets/imap/sidebar_header_active_bg.png) repeat-x #808080;
 }
 .claro .dijitToolbar .dijitToggleButtonChecked .dijitButtonNode {
-   background:url(../../assets/imap/sidebar_header_active_bg.png) repeat-x #808080;
+   /*background:url(../../assets/imap/sidebar_header_active_bg.png) repeat-x #808080;*/
 }
 .dojoxFloatingPaneTitle{
   background:url(../../assets/imap/toolbar_bg.png) repeat-x #282828;
@@ -68,7 +68,7 @@ body {
 
 
 .esriPopup .titlePane{
-  background-color:#808080;
+  background-color: #343434;
   border-style:none;
 }
 

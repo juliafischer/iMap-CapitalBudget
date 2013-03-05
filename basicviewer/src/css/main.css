@@ -164,14 +164,14 @@ body {
     color: rgba(255, 255, 255, 0);
 }
 .claro .dijitToolbar .dijitToggleButtonChecked .dijitButtonNode {
-    color:#333;
+    color: #f9f9f9;
     border-style: solid;
 }
 
 .claro .dijitToolbar  .dijitButtonNode{
     padding: 5px;
+    color: #f9f9f9;
     background:url(../assets/imap/toolbar_bg.png) repeat-x #282828; !important
-
 }
 
 
@@ -190,8 +190,8 @@ body {
 
 #webmap-toolbar-right {
     float: right;
-    width:275px;
-    display: inline-block;
+    width: 275px;
+    overflow: hidden;
 }
 
 /*Style for company logo added to the map*/
@@ -206,6 +206,25 @@ body {
     border:none;
 }
 /*Styles for the toolbar buttons*/
+
+.esriShowPointsIcon{
+    background-image: url(../../assets/toolbar/ShowPoints.PNG);
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 48px;
+    width: 225px;
+    margin: 4px 0 4px 4px;
+}
+
+.esriHidePointsIcon{
+    background-image: url(../../assets/toolbar/HidePoints.PNG);
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 48px;
+    width: 225px;
+    margin: 4px 0 4px 4px;
+}
+
 .esriBasemapIcon {
     background-image: url(../../assets/toolbar/Basemaps.PNG);
     background-repeat: no-repeat;
@@ -639,6 +658,7 @@ div#editDiv.templatePicker .grid  .selectedItem {
     padding: 10px 2px 2px 0px;
 }
 
+
 #search {
     inline: block;
     float: right;
@@ -651,10 +671,12 @@ div#editDiv.templatePicker .grid  .selectedItem {
     display: none !important;
 }*/
 
-.claro .dijitButtonText{
+
+.claro .dijiButtonText{
     display: none !important;
 }
 
 .esriGeocoderContainer{
+
     margin-top: 10px;
 }

@@ -3,9 +3,9 @@
  */
 define(["dojo/_base/declare", "../utilities/environment", "dojo/_base/lang", "dojo/Evented", "dijit/registry", "require", "dojo/dom", "dijit/layout/ContentPane"
     , "dojox/widget/Standby", "../utilities/maphandler", "dojo/_base/array", "dojo/query"
-    , "dojox/layout/FloatingPane", "dojo/dom-construct", "dojo/on", "dijit/form/ToggleButton", "dijit/form/DropDownButton"],
+    , "dojox/layout/FloatingPane", "dojo/dom-construct", "dojo/on", "dijit/form/ToggleButton", "dijit/form/DropDownButton", "dijit/form/RadioButton"],
     function(declare, environment, lang, Evented, registry, require, dom, contentPane, Standby, mapHandler, dojoArray, query
-        , floatingPane, domConstruct, on, ToggleButton, DropDownButton){
+        , floatingPane, domConstruct, on, ToggleButton, DropDownButton, RadioButton){
         return declare([], {
             //The application configuration properties (originated as configOptions from app.js then overridden by AGO if applicable)
             _AppConfig: null
@@ -79,6 +79,46 @@ define(["dojo/_base/declare", "../utilities/environment", "dojo/_base/lang", "do
 
                     this._CreateToolButton(widgetParams, btnId, btnTitle, btnIconClass, modulePath);
                 }
+
+                //CAPITAL BUDGET RADIO BUTTON
+                var btnID = 'radTogglePoints';
+                var btnTitle = 'Show Points';
+                var btnIconClass = 'esriShowPointsIcon';
+
+                var theBtn = new ToggleButton({
+                    title: btnTitle,
+                    id: btnID,
+                    iconClass: btnIconClass
+                });
+                this._CenterToolDiv.appendChild(theBtn.domNode);
+                //this._RightToolDiv.insertBefore(theBtn.domNode, document.getElementById("search"));
+                on(theBtn, "click", lang.hitch(this, function(e){
+
+                    var map = mapHandler.map;
+                    var tglLayername = this._AppConfig.layername;
+                    //var pointLayer = map.getlayers(tglLayername);
+
+                    var graphicsLayers = map.graphicsLayerIds;
+                    var pointLayer;
+                    for (var i = 0; i < graphicsLayers.length; i++) {
+                        var layername = graphicsLayers[i];
+                        var layer = map.getLayer(layername);
+                        if (layer.name === tglLayername) {
+                            pointLayer = layer;
+                        }
+                    }
+
+                    var input = registry.byId("radTogglePoints");
+
+                        if (input.checked) {
+                            isVisible = "true";
+                            input.set("iconClass","esriHidePointsIcon");
+                        } else {
+                            isVisible = NaN;
+                            input.set("iconClass","esriShowPointsIcon");
+                        }
+                    pointLayer.setVisibility(isVisible);
+                }))
             }
 
             // Creates a toolbar button, and wires up a click handler to request your module and load it on first click only.
