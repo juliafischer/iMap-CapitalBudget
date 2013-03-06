@@ -43,3 +43,9 @@ text-align:center;
    margin-top:4px;
    float:left;
 }
+
+#pointLayerLegend{
+    margin: 0 !important;
+    text-align: center;
+    display: inline;
+}

@@ -8,8 +8,8 @@
  *  in order to work with modules, dojo/aspect after() or before() functions should be used.
  */
 define(["dojo/_base/declare", "dojo/dom-construct", "dijit/_WidgetBase", "dijit/_TemplatedMixin", "dojo/on", "dijit/registry"
-    , "dojo/text!./capbudg.html", "dojo/_base/lang"
-    , "dojo/dom", "dojo/query", "dojox/charting/Chart", "dojox/charting/themes/Claro", ".././core/utilities/maphandler"
+    , "dojo/text!./CapBudgResources.html", "dojo/_base/lang"
+    , "dojo/dom", "dojo/query", "dojox/charting/Chart", "dojox/charting/themes/Claro", ".././../../core/utilities/maphandler"
     , "dojox/charting/plot2d/Pie", "dojox/charting/action2d/Tooltip", "dojox/charting/action2d/MoveSlice", "xstyle/css!./capbudg.css"],
     function(declare, domConstruct, WidgetBase, TemplatedMixin, on, registry, template, lang
                 , dom, query, Chart, theme, mapHandler, PiePlot, Tooltip, MoveSlice){
@@ -36,9 +36,9 @@ define(["dojo/_base/declare", "dojo/dom-construct", "dijit/_WidgetBase", "dijit/
                 this.chartData = [
                     {x: 1, y: 31508000, tooltip: "Economic Development", text:"", color: "rgb(40, 75, 112)", mylabel: "Economic Development"},
                     {x: 1, y: 561205000, tooltip: "Education",  text: "", color: "rgb(112, 40, 40)", mylabel: "Education" },
-                    {x: 1, y: 314238000, tooltip: "Health & Environment", text: "", color: "rgb(95, 113, 67)", mylabel: "Health & Environment" },
+                    {x: 1, y: 314238000, tooltip: "Health and Environment", text: "", color: "rgb(95, 113, 67)", mylabel: "Health & Environment" },
                     {x: 1, y: 3090000, tooltip: "Other", text: "", color: "rgb(246, 188, 12)", mylabel: "Other" },
-                    {x: 1, y: 31111000, tooltip: "Public Safety & Safer Neighborhoods", text: "",  color: "rgb(56, 44, 108)" },
+                    {x: 1, y: 31111000, tooltip: "Public Safety and Safer Neighborhoods", text: "",  color: "rgb(56, 44, 108)" },
                     {x: 1, y: 566600000, tooltip: "Transportation", text: "", color: "rgb(80, 34, 79)" }
                 ];
 

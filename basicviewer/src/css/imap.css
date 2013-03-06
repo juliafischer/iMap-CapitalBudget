@@ -9,9 +9,11 @@ body {
 /*#toolbarContainer .dijitToolbar {
   background:url(../../assets/imap/toolbar_bg.png) repeat-x #282828;
 }*/
-/*Measure toggle button*/
+/*Show/Hide toggle button*/
+
+
 .claro .dijitToolbar .dijitButtonNode:hover {
-  background:url(../../assets/imap/sidebar_header_active_bg.png) repeat-x #808080;
+  /*background:url(../../assets/imap/sidebar_header_active_bg.png) repeat-x #808080;*/
 }
 .claro .dijitToolbar .dijitToggleButtonChecked .dijitButtonNode {
    /*background:url(../../assets/imap/sidebar_header_active_bg.png) repeat-x #808080;*/

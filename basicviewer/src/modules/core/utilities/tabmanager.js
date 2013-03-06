@@ -30,11 +30,31 @@ define(["dojo/_base/declare", "../utilities/environment", "dojo/_base/lang", "do
                     //*** Give the tab's content pane a unique id.
                     //*** and title to display in the tab
                     var tabParams = {
-                        title: 'Fiscal Year 2014 Proposed Capital Budget', //i18n.tools.details.title,
+                        title: 'Fiscal Year 2014 Capital Budget', //i18n.tools.details.title,
                         id: 'detailPanel'
                     };
                     //*** The relative path to your module file
-                    var modulePath = "../../custom/capbudg";
+                    var modulePath = "../../custom/CapitalBudget/OverviewTab/capbudgOverview";
+                    //*** If your widget requires specific constructor parameters to be passed in, you can set the object here.
+                    var constructorParams = { };
+                    //*** Does your widget's parent need to be resized after it's startup in order to layout properly? Default to false.
+                    var resizeAfterStartup = false;
+
+                    this._CreateTabPane(leftTabCont, configParamName, tabParams, modulePath, constructorParams, resizeAfterStartup);
+                }
+
+                if ((this._AppConfig.displaydetails === 'true' || this._AppConfig.displaydetails === true) && this._AppConfig.description !== "") {
+                    //*** Check if this pane was set to be the startup pane in app.js or AGO. Replace the param name in next line.
+                    var configParamName = 'displayresources';
+                    //*** Constructor params for the tab (which is a contentpane- http://dojotoolkit.org/reference-guide/1.8/dijit/layout/ContentPane.html).
+                    //*** Give the tab's content pane a unique id.
+                    //*** and title to display in the tab
+                    var tabParams = {
+                        title: 'Additional Resources', //i18n.tools.details.title,
+                        id: 'resourcesPanel'
+                    };
+                    //*** The relative path to your module file
+                    var modulePath = "../../custom/CapitalBudget/ResourcesTab/capbudgResources";
                     //*** If your widget requires specific constructor parameters to be passed in, you can set the object here.
                     var constructorParams = { };
                     //*** Does your widget's parent need to be resized after it's startup in order to layout properly? Default to false.

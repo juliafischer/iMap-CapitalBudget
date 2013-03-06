@@ -160,18 +160,32 @@ body {
     border-width: 0px;
 }
 /*Measure toggle button*/
-.claro .dijitToolbar .dijitButtonNode:hover {
+/*.claro .dijitToolbar .dijitButtonNode:hover {
     color: rgba(255, 255, 255, 0);
-}
-.claro .dijitToolbar .dijitToggleButtonChecked .dijitButtonNode {
+}*/
+/*.claro .dijitToolbar .dijitToggleButtonChecked .dijitButtonNode {
     color: #f9f9f9;
     border-style: solid;
-}
+}*/
 
 .claro .dijitToolbar  .dijitButtonNode{
     padding: 5px;
     color: #f9f9f9;
-    background:url(../assets/imap/toolbar_bg.png) repeat-x #282828; !important
+    /*background:url(../assets/imap/toolbar_bg.png) repeat-x #282828; !important*/
+}
+.claro .dijitToolbar .dijitButtonNode{
+    float: right;
+    margin-right: 280px;
+}
+.claro .dijitToolbar .dijitToggleButtonChecked .dijitButtonNode {
+    float: right;
+    margin-right: 280px;
+    border-width: 0px;
+    border-style: solid;
+    background-image: none;
+    border-color: #759dc0;
+    background-color: transparent;
+    padding: 1px;
 }
 
 
@@ -186,6 +200,7 @@ body {
     margin: 0 auto;
     overflow:hidden;
     display: table;
+    float: right;
 }
 
 #webmap-toolbar-right {
@@ -211,18 +226,18 @@ body {
     background-image: url(../../assets/toolbar/ShowPoints.PNG);
     background-repeat: no-repeat;
     display: inline-block;
-    height: 48px;
-    width: 225px;
-    margin: 4px 0 4px 4px;
+    height: 33px;
+    width: 180px;
+    margin: 8px 0 4px 4px;
 }
 
 .esriHidePointsIcon{
     background-image: url(../../assets/toolbar/HidePoints.PNG);
     background-repeat: no-repeat;
     display: inline-block;
-    height: 48px;
-    width: 225px;
-    margin: 4px 0 4px 4px;
+    height: 33px;
+    width: 180px;
+    margin: 8px 0 4px 4px;
 }
 
 .esriBasemapIcon {
@@ -664,7 +679,7 @@ div#editDiv.templatePicker .grid  .selectedItem {
     float: right;
     position: absolute;
     z-index: 70;
-    margin-left: 30px;
+    margin-left: 5px;
 }
 
 /*.claro .dijitArrowButtonInner{

@@ -49,7 +49,7 @@ define(["dojo/_base/declare", "dojo/on", "dojo/_base/lang", "esri/dijit/Geocoder
                     "xoffset":0,
                     "yoffset":10,
                     "type":"esriPMS",
-                    "url":"assets/BluePin1LargeB.png",
+                    "url":"assets/RedPin1LargeB.png",
                     "contentType":"image/png",
                     "width":24,
                     "height":24
