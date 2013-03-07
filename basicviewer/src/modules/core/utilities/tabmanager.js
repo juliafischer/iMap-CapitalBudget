@@ -30,7 +30,7 @@ define(["dojo/_base/declare", "../utilities/environment", "dojo/_base/lang", "do
                     //*** Give the tab's content pane a unique id.
                     //*** and title to display in the tab
                     var tabParams = {
-                        title: 'Fiscal Year 2014 Capital Budget', //i18n.tools.details.title,
+                        title: 'Overview', //i18n.tools.details.title,
                         id: 'detailPanel'
                     };
                     //*** The relative path to your module file

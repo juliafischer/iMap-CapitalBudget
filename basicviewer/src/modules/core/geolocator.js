@@ -30,9 +30,9 @@ define(["dojo/_base/declare", "dojo/on", "dojo/_base/lang", "esri/dijit/Geocoder
                 var extent = new esri.geometry.Extent(-8905000,4553000,-8321000,4837000, new esri.SpatialReference({ wkid:3857 }))
                 // create the geocoder
                 var geocoder = new esri.dijit.Geocoder({
-                    autoNavigate: false, // do not zoom to best result
+                    autoNavigate: true, // do not zoom to best result
                     //autoComplete: true,
-                    maxLocations: 20, // increase number of results returned
+                    maxLocations: 1, // increase number of results returned
                     map: this.map,
                     arcgisGeocoder: {
                         url: this.geocoderUrl || "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer",
@@ -73,11 +73,11 @@ define(["dojo/_base/declare", "dojo/on", "dojo/_base/lang", "esri/dijit/Geocoder
                             //r.feature.setInfoTemplate(this._InfoTemplate);
                             l.add(r.feature);
                             }));
-                        if (l.graphics.length > 1) {
+                        /*if (l.graphics.length > 1) {
                             var myFeatureExtent = esri.graphicsExtent(l.graphics);
                             map.setExtent(myFeatureExtent, true);
                         } else
-                            map.centerAndZoom(l.graphics[0].geometry,14);
+                            map.centerAndZoom(l.graphics[0].geometry,14);*/
                     } else {
                         alert("Search failed to return Results.");
                     }

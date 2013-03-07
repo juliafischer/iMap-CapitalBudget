@@ -57,7 +57,7 @@ define(["dojo/_base/declare", "dojo/dom-construct", "dijit/_WidgetBase", "dijit/
 
                 // Create the chart within it's "holding" node - which is defined in capbudg.html snippet
                 var pieChart = new Chart("capBudgChartDiv",{
-                    title: "FY 2014 Capital Budget Statewide Totals",
+                    title: "Statewide Totals",
                     titlePos: "top",
                     titleFont: "normal normal normal 12pt Arial",
                     titleFontColor: "black"

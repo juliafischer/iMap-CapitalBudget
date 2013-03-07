@@ -31,7 +31,7 @@ define(["dojo/_base/declare", "dojox/html/entities", "dojo/_base/lang", "dojo/Ev
                     //set to true to display the title
                     displaytitle: true,
                     //Enter a title, if no title is specified, the webmap's title is used.
-                    title: "Fiscal Year 2014 Capital Budget",
+                    title: "Fiscal Year 2014 Proposed Capital Budget",
                     //URL to title logo, if none specified, then defaults to assets/MDLogo.gif
                     layername: "FY14CapitalBudgetIndividualProjects",
                     titleLogoUrl: "assets/MDlogo-small.gif",
