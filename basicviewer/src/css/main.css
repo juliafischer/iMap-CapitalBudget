@@ -606,6 +606,15 @@ div#map_zoom_slider.esriSimpleSlider.esriSimpleSliderVertical.esriSimpleSliderTL
 .esriPopup .pointer.topRight {
     right: 0px; top: -43px; background-position: 0 -707px; width: 51px; height: 45px;
 }
+
+/*expand max height to include pie chart in popup without need for a scroll bar.  Default was 300px */
+.esriPopup .contentPane {
+    max-height: 360px;
+}
+.esriViewPopup .gallery .frame div.chart {
+    margin: 0 7px;
+}
+
 /*Define styles for the close button on the measure window panel*/
 #closeBtn{
     position:absolute;
